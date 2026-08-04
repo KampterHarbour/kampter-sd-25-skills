@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kampter Seedance 2.5 中文版"
+  short_description: "讨论并撰写 Seedance 2.5 视频提示词"
+  default_prompt: "使用 $kampter-sd-25-skills-zh，把我的 Seedance 2.5 想法整理为可直接使用的提示词。"
