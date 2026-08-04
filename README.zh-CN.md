@@ -46,7 +46,7 @@
 - 英文版：CODEX_HOME/skills/kampter-sd-25-skills
 - 中文版：CODEX_HOME/skills/kampter-sd-25-skills-zh
 
-没有设置 CODEX_HOME 时，使用 Codex 的默认 Skills 目录。适合小红书分发的独立安装包只包含简体中文版、中文专用安装器和精简的本地说明，不再附带英文版或完整仓库目录。详见 [INSTALL.zh-CN.md](INSTALL.zh-CN.md)。
+没有设置 CODEX_HOME 时，使用 Codex 的默认 Skills 目录。适合小红书分发的独立安装包只包含简体中文版、中文专用安装器和精简的本地说明，不再附带英文版或完整仓库目录。详见 [INSTALL.zh-CN.md](INSTALL.zh-CN.md) 和 [PACKAGE-README.zh-CN.md](PACKAGE-README.zh-CN.md)。
 
 调用示例：
 

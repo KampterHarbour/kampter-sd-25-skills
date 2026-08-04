@@ -30,6 +30,19 @@ function Require-Directory {
     }
 }
 
+function Get-DocumentSignature {
+    param([string]$RelativePath)
+    $lines = @(Get-Content -LiteralPath (Join-Path $Root $RelativePath) -Encoding utf8)
+    return [PSCustomObject]@{
+        Lines = $lines.Count
+        Headings = @($lines | Where-Object { $_ -match '^#{1,4} ' }).Count
+        BulletItems = @($lines | Where-Object { $_ -match '^- ' }).Count
+        NumberedItems = @($lines | Where-Object { $_ -match '^\d+\. ' }).Count
+        TableRows = @($lines | Where-Object { $_ -match '^\|' }).Count
+        Fences = @($lines | Where-Object { $_ -match '^~~~' }).Count
+    }
+}
+
 $versionPath = Join-Path $Root "VERSION"
 if (-not (Test-Path -LiteralPath $versionPath -PathType Leaf)) {
     Add-CheckError "Missing VERSION."
@@ -47,7 +60,8 @@ $pairedPublicDocs = @(
     @("CHANGELOG.en.md", "CHANGELOG.zh-CN.md"),
     @("NOTICE.en.md", "NOTICE.zh-CN.md"),
     @("LICENSE.en.md", "LICENSE.zh-CN.md"),
-    @("INSTALL.en.md", "INSTALL.zh-CN.md")
+    @("INSTALL.en.md", "INSTALL.zh-CN.md"),
+    @("PACKAGE-README.en.md", "PACKAGE-README.zh-CN.md")
 )
 
 foreach ($pair in $pairedPublicDocs) {
@@ -59,7 +73,6 @@ Require-File "SKILL.md"
 Require-File "zh-CN\SKILL.md"
 Require-Directory "agents"
 Require-Directory "zh-CN\agents"
-Require-File "PACKAGE-README.zh-CN.md"
 Require-File "tools\install-xiaohongshu-zh.ps1"
 
 $referenceNames = @(
@@ -79,6 +92,31 @@ foreach ($reference in $referenceNames) {
     Require-File (Join-Path "zh-CN\references" $reference)
 }
 
+$pairedDocuments = [System.Collections.Generic.List[object]]::new()
+foreach ($pair in $pairedPublicDocs) {
+    [void]$pairedDocuments.Add($pair)
+}
+[void]$pairedDocuments.Add(@("SKILL.md", "zh-CN\SKILL.md"))
+[void]$pairedDocuments.Add(@("agents\openai.yaml", "zh-CN\agents\openai.yaml"))
+foreach ($reference in $referenceNames) {
+    [void]$pairedDocuments.Add(@((Join-Path "references" $reference), (Join-Path "zh-CN\references" $reference)))
+}
+
+$signatureMetrics = @("Lines", "Headings", "BulletItems", "NumberedItems", "TableRows", "Fences")
+foreach ($pair in $pairedDocuments) {
+    $englishPath = Join-Path $Root $pair[0]
+    $chinesePath = Join-Path $Root $pair[1]
+    if ((Test-Path -LiteralPath $englishPath -PathType Leaf) -and (Test-Path -LiteralPath $chinesePath -PathType Leaf)) {
+        $englishSignature = Get-DocumentSignature $pair[0]
+        $chineseSignature = Get-DocumentSignature $pair[1]
+        foreach ($metric in $signatureMetrics) {
+            if ($englishSignature.$metric -ne $chineseSignature.$metric) {
+                Add-CheckError "Bilingual structure mismatch for $($pair[0]) and $($pair[1]): $metric"
+            }
+        }
+    }
+}
+
 $expectedContent = @{
     "SKILL.md" = "name: kampter-sd-25-skills"
     "zh-CN\SKILL.md" = "name: kampter-sd-25-skills-zh"
@@ -88,6 +126,7 @@ $expectedContent = @{
     "CHANGELOG.en.md" = "## v$version"
     "CHANGELOG.zh-CN.md" = "## v$version"
     "PACKAGE-MANIFEST.json" = "`"version`": `"$version`""
+    "PACKAGE-README.en.md" = "Simplified Chinese package"
     "PACKAGE-README.zh-CN.md" = "kampter-sd-25-skills-zh"
     "INSTALL.en.md" = "Simplified Chinese edition only"
     "INSTALL.zh-CN.md" = "kampter-sd-25-skills-zh"

@@ -10,7 +10,7 @@ Copyright (c) 2026 KampterHarbour。
 2. 原始作品：kampter-sd-25-skills。
 3. 原始仓库：https://github.com/KampterHarbour/kampter-sd-25-skills
 4. 许可证：https://creativecommons.org/licenses/by/4.0/
-5. 若作出修改，明确说明修改内容。
+5. 若作出修改，清楚说明修改内容。
 
 署名示例：
 

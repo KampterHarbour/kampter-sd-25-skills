@@ -46,7 +46,7 @@ For normal installation, copy the chosen edition folder to a discoverable Codex 
 - English: CODEX_HOME/skills/kampter-sd-25-skills
 - Chinese: CODEX_HOME/skills/kampter-sd-25-skills-zh
 
-When CODEX_HOME is not configured, use the default Codex Skills directory. The standalone Xiaohongshu package contains the Simplified Chinese edition only, together with a dedicated Chinese installer and concise local documentation. Install the English edition from the repository root. See [INSTALL.en.md](INSTALL.en.md).
+When CODEX_HOME is not configured, use the default Codex Skills directory. The standalone Xiaohongshu package contains the Simplified Chinese edition only, together with a dedicated Chinese installer and concise local documentation. Install the English edition from the repository root. See [INSTALL.en.md](INSTALL.en.md) and [PACKAGE-README.en.md](PACKAGE-README.en.md).
 
 Invoke an installed edition, for example:
 

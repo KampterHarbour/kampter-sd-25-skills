@@ -10,7 +10,7 @@ When redistributing or adapting this project under CC BY 4.0, provide all of the
 2. Original work: kampter-sd-25-skills.
 3. Source URL: https://github.com/KampterHarbour/kampter-sd-25-skills
 4. License URL: https://creativecommons.org/licenses/by/4.0/
-5. A clear note describing changes, when changes were made.
+5. A clear description of modifications, if any.
 
 Example attribution:
 

@@ -13,6 +13,8 @@ This project follows Semantic Versioning. Tags use the v prefix.
 
 - Added a dedicated Chinese installer that installs `kampter-sd-25-skills-zh` without a language-selection step.
 - Added package validation that rejects English Skill files, nested `skills` directories, and English documentation in the Xiaohongshu archive.
+- Added paired English and Chinese package documentation plus a bilingual documentation index.
+- Added structural parity validation for public documents, both Skill definitions, agent metadata, and every progressive reference page.
 
 ## v0.1.1 - 2026-08-04
 
