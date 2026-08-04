@@ -1,49 +1,45 @@
 # Video Editing
 
-> Load order: read `00-core-constraints.md` first. Use this page only when an existing video is being changed. Read `30-final-review.md` immediately before delivery.
+Read 00-core-constraints.md first. Use this page only when changing an existing video. Read 30-final-review.md immediately before delivery.
 
-## Required inputs
+## Required Inputs
 
-- Target object, person, region, or attribute
-- Requested change
-- Effective start and end time
-- Location or user annotation when the target is not unambiguous
-- Elements that must remain unchanged
+- Target object, person, region, or attribute.
+- Requested change.
+- Effective start and end time.
+- Location or user annotation if the target is ambiguous.
+- Elements that must remain unchanged.
 
-Do not default to remaking the full video when the user asks for a local modification.
+Do not default to remaking the whole video for a local modification.
 
-## Core instruction
+## Core Instruction
 
-Write the edit as:
+Write the edit as: target + requested change + effective time.
 
-> Target + requested change + effective time
+For advanced edits, add a visible location or user annotation. Keep the edit request separate from preservation requirements.
 
-For advanced edits, add a visible location or the user’s annotation name. Separate the edit request from the preservation requirements.
+## Prompt Template
 
-## Prompt template
+~~~text
+[Task]
+Edit the existing video.
 
-```text
-[任务]
-编辑已有视频。
+[Edit instruction]
+From [start] to [end], change [target object's] [attribute / action / content] to [requested result].
+Location: [screen region or user annotation; use only when needed].
 
-[编辑指令]
-在[起止时间]，将[目标对象]的[属性/动作/内容]改为[期望变化]。
-位置：[画面区域或用户标注名称；仅在需要时填写]。
+[Keep unchanged]
+Keep [identity, other objects, background, composition, camera movement, duration, sound, and unedited periods] unchanged.
 
-[保持不变]
-保持[人物身份、其他对象、背景、构图、运镜、时长、声音和未编辑时段]不变。
+[Result requirement]
+Start the change naturally at [trigger] and complete it by [end point]. Preserve edge quality, occlusion, perspective, lighting, shadow, and motion continuity.
+~~~
 
-[结果要求]
-变化从[触发点]自然开始，在[结束点]完成；保持边缘、遮挡、透视、光影和运动连续。
-```
+## Precision Rules
 
-## Precision rules
-
-- 明确视觉目标，不要只说“把它改掉”。
+- Name the visual target; do not say only "change it."
 - State whether the change is local, time-bounded, or global.
-- Preserve relative size, perspective, occlusion, reflection, and interaction when they matter.
-- Avoid ambiguous global style instructions unless the user explicitly requests a full-video change.
+- Preserve relative size, perspective, occlusion, reflection, and interaction when relevant.
+- Avoid global style instructions unless the user asks for a full-video change.
 
-## Exit criteria
-
-Proceed to `30-final-review.md` when the edit’s target, change, effective time, scope, and preservation set are all explicit.
+Proceed to 30-final-review.md when target, change, effective time, scope, and preservation set are explicit.
