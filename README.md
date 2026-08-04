@@ -7,8 +7,8 @@ Choose the language edition that matches the agent installation. / 请选择与 
 - English Skill: repository root, installed as kampter-sd-25-skills
 - 中文 Skill：位于 zh-CN，安装名称为 kampter-sd-25-skills-zh
 
-Current version: v0.1.2
-当前版本：v0.1.2
+Current version: v0.1.3
+当前版本：v0.1.3
 
 The Xiaohongshu distribution bundle contains the Simplified Chinese edition only.
 小红书分发包只包含简体中文版。

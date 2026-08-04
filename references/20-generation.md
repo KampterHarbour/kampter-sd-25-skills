@@ -11,6 +11,35 @@ Read 00-core-constraints.md first. Use this page only for a new video or a new v
 
 Use 10-intake-and-routing.md for missing high-impact inputs.
 
+## Official Generation Guidance
+
+The manual supports first-frame, first/last-frame, multimodal-reference, and pure-audio-driven generation. When a user supplies only audio, identify whether it controls voice, music, rhythm, mood, or a different audible reference, then ask for or state the visual assumptions instead of inventing them.
+
+For uploaded material, follow the manual's material-description pattern: keep the item number or UI identifier, then state its specific purpose such as person, voice, action, or scene. Repeating a real `@image`, `@video`, or `@audio` identifier where it matters can make the intended mapping clearer; never fabricate an identifier.
+
+## Official Subject Formula
+
+For a human or animated character that needs specificity, the manual decomposes the description into:
+
+1. Age/race or character baseline.
+2. Skin tone and skin texture.
+3. Distinctive facial details.
+4. Eyes, gaze, or inner state.
+5. Hair style and color.
+6. Clothing and material quality.
+7. Build, emotion, and overall presence.
+
+Use only details that serve the user's intended shot. Keep identity anchors consistent across the timeline.
+
+## Duration-Specific Official Patterns
+
+| Task | Use the official pattern |
+| --- | --- |
+| Up to 30 seconds | Start with a one-line title, then a multimodal-reference layer, global setting, and timestamped screenplay. The global setting can define environment, visual style, camera language, character/subject, performance focus, and exclusions. |
+| Ultra-long | State selected global parameters such as duration and aspect ratio first, then use material description, one-line overview, concrete timeline/story, and a closing global supplement. |
+
+For every timestamp segment, use positive visual/action/camera/sound instructions for the desired result. Put concise exclusions such as unwanted subtitles or BGM in the relevant segment or the closing global supplement.
+
 ## Compose in Causal Order
 
 1. Establish the initial frame and subject state.

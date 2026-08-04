@@ -4,7 +4,7 @@ An independent, conversational Skill for turning an idea, storyboard, reference-
 
 Maintained by [KampterHarbour](https://github.com/KampterHarbour). This is a community project and is not affiliated with or endorsed by ByteDance.
 
-Current version: v0.1.2. See [CHANGELOG.en.md](CHANGELOG.en.md).
+Current version: v0.1.3. See [CHANGELOG.en.md](CHANGELOG.en.md).
 
 ## Choose an Edition
 
@@ -19,6 +19,7 @@ Both editions have the same workflow, boundaries, official-fact set, templates, 
 
 - Clarifies a video concept, desired audience effect, duration, visual language, camera, sound, and constraints with beginners or directors.
 - Routes new generation, video editing, extension, white-model/previsualization, and prompt-diagnosis work to the appropriate template.
+- Reflects the current manual's documented ranges, pure-audio-driven input, reference limits, editing annotations, extension patterns, and coarse/fine white-model guidance.
 - Organizes complex prompts as parameters, material mapping, one-line concept, global setup, timestamped storyboard, sound, negative constraints, and global reinforcement.
 - Checks duration, material limits, timeline continuity, reference roles, sound, and conflicting instructions before delivery.
 

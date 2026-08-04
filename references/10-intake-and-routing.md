@@ -11,6 +11,7 @@ Produce a compact creative brief sufficient to draft a prompt, or identify the o
 | Signal | Task | Load next |
 | --- | --- | --- |
 | A new video with no original video to preserve | New generation | 20-generation.md |
+| A new video driven only by an audio reference | New generation | 20-generation.md |
 | Change, replace, or transform something in an existing video | Editing | 21-editing.md |
 | Continue or add more to an existing video | Extension | 22-extension.md |
 | White model, animatic, blocking, or 3D layout | White model | 23-white-model.md |

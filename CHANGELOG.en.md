@@ -2,6 +2,18 @@
 
 This project follows Semantic Versioning. Tags use the v prefix.
 
+## v0.1.3 - 2026-08-04
+
+### Changed
+
+- Re-read the official Seedance 2.5 manual from the signed-in Lark view and refreshed the source boundary with only verifiable facts.
+- Updated both language editions and their progressive task pages in lockstep.
+
+### Added
+
+- Documented pure-audio-driven generation, reference-video timing detail, named modes, supported editing directions, and language coverage.
+- Added official prompt, extension, annotation-editing, and coarse/fine white-model patterns to the applicable task pages.
+
 ## v0.1.2 - 2026-08-04
 
 ### Fixed

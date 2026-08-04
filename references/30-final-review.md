@@ -18,6 +18,7 @@ Do not polish a prompt that violates a hard range or contains a critical contrad
 - Duration, reference counts, and media totals fit 00-core-constraints.md.
 - One sentence explains subject, setting, visible change, and intended effect.
 - Every material has an identifier and specific role; unseen materials are not invented.
+- A pure-audio-driven brief names the audio role and states or confirms the visual assumptions.
 - Time segments are continuous, non-overlapping, and total the requested duration.
 - Each segment contains an observable action or change.
 - Camera, action, light, style, and constraints do not conflict.
@@ -25,16 +26,18 @@ Do not polish a prompt that violates a hard range or contains a critical contrad
 - Dialogue and sound cues fit their time window.
 - Negative constraints are concise, concrete, and compatible with the positive target.
 - No placeholder or hidden assumption remains.
+- Named modes or capabilities match 00-core-constraints.md and are not converted into API or quality claims.
+- Any answer about official support was checked against 90-source-notes.md.
 - No promise, API claim, or automation statement appears.
 
 ## Task-Specific Checks
 
 | Task | Verify |
 | --- | --- |
-| Generation | Clear opening, progression, and landing; material roles do not collide. |
-| Editing | Target, change, effective time, scope, location when needed, and unchanged elements are explicit. |
-| Extension | End state, continuity strategy, bridge, new action, final state, and duration arithmetic are explicit. |
-| White model | Inherited and redesigned information are separately stated. |
+| Generation | Clear opening, progression, and landing; material roles do not collide; duration-specific official pattern is used where helpful. |
+| Editing | Target, change, effective time, scope, unchanged elements, and any advanced annotation tool/side are explicit. |
+| Extension | Direction, end state, continuity strategy, transition logic, new action, final state, and duration arithmetic are explicit. |
+| White model | Coarse/fine role, inherited information, redesign information, mappings, and guide-overlay handling are explicit. |
 | Diagnosis | Original intent, defect, minimum fix, and full rewrite are separated. |
 
 ## Final Response Shape
