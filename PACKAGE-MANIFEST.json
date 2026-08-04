@@ -1,0 +1,17 @@
+{
+  "name": "kampter-sd-25-skills",
+  "version": "0.1.1",
+  "package": "kampter-sd-25-skills-v0.1.1-xiaohongshu.zip",
+  "skills": [
+    {
+      "folder": "skills/kampter-sd-25-skills",
+      "name": "kampter-sd-25-skills",
+      "language": "en"
+    },
+    {
+      "folder": "skills/kampter-sd-25-skills-zh",
+      "name": "kampter-sd-25-skills-zh",
+      "language": "zh-CN"
+    }
+  ]
+}

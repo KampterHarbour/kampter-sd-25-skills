@@ -1,23 +1,3 @@
-kampter-sd-25-skills
-Copyright (c) 2026 KampterHarbour
+# Attribution Notice / 署名说明
 
-Canonical source:
-https://github.com/KampterHarbour/kampter-sd-25-skills
-
-This work is licensed under the Creative Commons Attribution 4.0
-International License (CC BY 4.0).
-
-When sharing or adapting this work, provide reasonable attribution that
-includes:
-
-1. The name "KampterHarbour" and the original work "kampter-sd-25-skills".
-2. A link to the canonical repository above.
-3. A link to the CC BY 4.0 license.
-4. A clear indication of whether changes were made.
-
-Attribution must not suggest that KampterHarbour endorses an adaptation or
-its author.
-
-The ByteDance Seedance 2.5 documentation referenced by this project remains
-the property of its respective rightsholder. This independent project is not
-affiliated with or endorsed by ByteDance.
+[English](NOTICE.en.md) | [中文](NOTICE.zh-CN.md)
