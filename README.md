@@ -4,6 +4,8 @@
 
 本项目由 [KampterHarbour](https://github.com/KampterHarbour) 维护，属于独立社区项目，不代表或获得字节跳动背书。
 
+**当前版本：** [`v0.1.0`](https://github.com/KampterHarbour/kampter-sd-25-skills/releases/tag/v0.1.0) · [变更日志](CHANGELOG.md)
+
 ## 能做什么
 
 - 与小白一起明确内容、效果、时长、视觉风格、镜头、声音和约束。
@@ -58,3 +60,7 @@
 3. 提供 CC BY 4.0 许可证链接，并明确说明修改内容。
 
 完整署名要求见 [NOTICE](NOTICE)。
+
+## 版本维护
+
+版本遵循 [Semantic Versioning](https://semver.org/spec/v2.0.0.html)。发布时同步更新 [VERSION](VERSION)、[CHANGELOG.md](CHANGELOG.md)、Git tag 和 GitHub Release；tag 使用 `v` 前缀，例如 `v0.1.0`。
