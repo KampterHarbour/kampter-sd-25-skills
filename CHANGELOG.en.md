@@ -2,6 +2,18 @@
 
 This project follows Semantic Versioning. Tags use the v prefix.
 
+## v0.1.2 - 2026-08-04
+
+### Fixed
+
+- Replaced the Xiaohongshu distribution bundle with a Simplified Chinese-only package.
+- Removed the English Skill and full-repository public-document set from the Xiaohongshu archive.
+
+### Added
+
+- Added a dedicated Chinese installer that installs `kampter-sd-25-skills-zh` without a language-selection step.
+- Added package validation that rejects English Skill files, nested `skills` directories, and English documentation in the Xiaohongshu archive.
+
 ## v0.1.1 - 2026-08-04
 
 ### Added

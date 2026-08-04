@@ -4,7 +4,7 @@ An independent, conversational Skill for turning an idea, storyboard, reference-
 
 Maintained by [KampterHarbour](https://github.com/KampterHarbour). This is a community project and is not affiliated with or endorsed by ByteDance.
 
-Current version: v0.1.1. See [CHANGELOG.en.md](CHANGELOG.en.md).
+Current version: v0.1.2. See [CHANGELOG.en.md](CHANGELOG.en.md).
 
 ## Choose an Edition
 
@@ -46,7 +46,7 @@ For normal installation, copy the chosen edition folder to a discoverable Codex 
 - English: CODEX_HOME/skills/kampter-sd-25-skills
 - Chinese: CODEX_HOME/skills/kampter-sd-25-skills-zh
 
-When CODEX_HOME is not configured, use the default Codex Skills directory. The standalone Xiaohongshu package includes both editions and a local installer guide. See [INSTALL.en.md](INSTALL.en.md).
+When CODEX_HOME is not configured, use the default Codex Skills directory. The standalone Xiaohongshu package contains the Simplified Chinese edition only, together with a dedicated Chinese installer and concise local documentation. Install the English edition from the repository root. See [INSTALL.en.md](INSTALL.en.md).
 
 Invoke an installed edition, for example:
 

@@ -14,9 +14,15 @@ $manifest = Get-Content -LiteralPath (Join-Path $Root "PACKAGE-MANIFEST.json") -
 if ($manifest.version -ne $version) {
     throw "PACKAGE-MANIFEST.json version ($($manifest.version)) does not match VERSION ($version)."
 }
+if ($manifest.skills.Count -ne 1 -or $manifest.skills[0].name -ne "kampter-sd-25-skills-zh" -or $manifest.skills[0].language -ne "zh-CN") {
+    throw "The Xiaohongshu package must contain only the Simplified Chinese Skill."
+}
 
 $dist = Join-Path $Root "dist"
-$releaseFolder = "kampter-sd-25-skills-v$version"
+$releaseFolder = [string]$manifest.archiveRoot
+if ([string]::IsNullOrWhiteSpace($releaseFolder) -or $releaseFolder -match '[\\/]') {
+    throw "PACKAGE-MANIFEST.json archiveRoot must be a single directory name."
+}
 $stage = Join-Path $dist $releaseFolder
 $archive = Join-Path $dist $manifest.package
 
@@ -25,39 +31,23 @@ if (Test-Path -LiteralPath $stage) {
 }
 
 New-Item -ItemType Directory -Force -Path $stage | Out-Null
-$skillRoot = Join-Path $stage "skills"
-New-Item -ItemType Directory -Force -Path $skillRoot | Out-Null
-
-$englishTarget = Join-Path $skillRoot "kampter-sd-25-skills"
-$chineseTarget = Join-Path $skillRoot "kampter-sd-25-skills-zh"
-New-Item -ItemType Directory -Force -Path $englishTarget, $chineseTarget | Out-Null
-
-Copy-Item -LiteralPath (Join-Path $Root "SKILL.md"), (Join-Path $Root "agents"), (Join-Path $Root "references") -Destination $englishTarget -Recurse
+$chineseTarget = Join-Path $stage $manifest.skills[0].folder
+New-Item -ItemType Directory -Force -Path $chineseTarget | Out-Null
 Copy-Item -LiteralPath (Join-Path $Root "zh-CN\SKILL.md"), (Join-Path $Root "zh-CN\agents"), (Join-Path $Root "zh-CN\references") -Destination $chineseTarget -Recurse
 
-$publicFiles = @(
-    "README.md",
-    "README.en.md",
-    "README.zh-CN.md",
-    "INSTALL.md",
-    "INSTALL.en.md",
-    "INSTALL.zh-CN.md",
-    "CHANGELOG.md",
-    "CHANGELOG.en.md",
-    "CHANGELOG.zh-CN.md",
-    "NOTICE",
-    "NOTICE.en.md",
-    "NOTICE.zh-CN.md",
-    "LICENSE",
-    "LICENSE.en.md",
-    "LICENSE.zh-CN.md",
-    "VERSION",
-    "PACKAGE-MANIFEST.json",
-    "install.ps1"
-)
+$packageFiles = [ordered]@{
+    "PACKAGE-README.zh-CN.md" = "README.md"
+    "INSTALL.zh-CN.md" = "INSTALL.md"
+    "NOTICE.zh-CN.md" = "NOTICE.md"
+    "LICENSE" = "LICENSE"
+    "LICENSE.zh-CN.md" = "LICENSE.zh-CN.md"
+    "VERSION" = "VERSION"
+    "PACKAGE-MANIFEST.json" = "PACKAGE-MANIFEST.json"
+    "tools\install-xiaohongshu-zh.ps1" = "install.ps1"
+}
 
-foreach ($file in $publicFiles) {
-    Copy-Item -LiteralPath (Join-Path $Root $file) -Destination $stage
+foreach ($source in $packageFiles.Keys) {
+    Copy-Item -LiteralPath (Join-Path $Root $source) -Destination (Join-Path $stage $packageFiles[$source])
 }
 
 Compress-Archive -LiteralPath $stage -DestinationPath $archive -Force

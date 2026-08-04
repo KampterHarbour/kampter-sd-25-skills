@@ -59,6 +59,8 @@ Require-File "SKILL.md"
 Require-File "zh-CN\SKILL.md"
 Require-Directory "agents"
 Require-Directory "zh-CN\agents"
+Require-File "PACKAGE-README.zh-CN.md"
+Require-File "tools\install-xiaohongshu-zh.ps1"
 
 $referenceNames = @(
     "00-core-constraints.md",
@@ -86,6 +88,9 @@ $expectedContent = @{
     "CHANGELOG.en.md" = "## v$version"
     "CHANGELOG.zh-CN.md" = "## v$version"
     "PACKAGE-MANIFEST.json" = "`"version`": `"$version`""
+    "PACKAGE-README.zh-CN.md" = "kampter-sd-25-skills-zh"
+    "INSTALL.en.md" = "Simplified Chinese edition only"
+    "INSTALL.zh-CN.md" = "kampter-sd-25-skills-zh"
 }
 
 foreach ($item in $expectedContent.GetEnumerator()) {
@@ -116,8 +121,23 @@ if (Test-Path -LiteralPath $manifestPath -PathType Leaf) {
         if ($manifest.version -ne $version) {
             Add-CheckError "Manifest version does not match VERSION."
         }
-        if ($manifest.skills.Count -ne 2) {
-            Add-CheckError "Manifest must declare exactly two standalone editions."
+        if ($manifest.name -ne "kampter-sd-25-skills-zh") {
+            Add-CheckError "Manifest name must identify the packaged Chinese Skill."
+        }
+        if ($manifest.package -ne "kampter-sd-25-skills-zh-v$version-xiaohongshu.zip") {
+            Add-CheckError "Manifest package name must identify the Chinese-only Xiaohongshu bundle."
+        }
+        if ($manifest.archiveRoot -ne "kampter-sd-25-skills-zh-v$version") {
+            Add-CheckError "Manifest archiveRoot must identify the Chinese-only bundle root."
+        }
+        if ($manifest.skills.Count -ne 1) {
+            Add-CheckError "Manifest must declare exactly one packaged Skill."
+        }
+        elseif ($manifest.skills[0].folder -ne "kampter-sd-25-skills-zh" -or $manifest.skills[0].name -ne "kampter-sd-25-skills-zh" -or $manifest.skills[0].language -ne "zh-CN") {
+            Add-CheckError "Manifest must declare the standalone Simplified Chinese Skill."
+        }
+        if ($manifest.distribution.channel -ne "xiaohongshu" -or $manifest.distribution.language -ne "zh-CN") {
+            Add-CheckError "Manifest distribution metadata must identify the Chinese Xiaohongshu bundle."
         }
     }
     catch {
@@ -125,7 +145,7 @@ if (Test-Path -LiteralPath $manifestPath -PathType Leaf) {
     }
 }
 
-$archive = if (Test-Path -LiteralPath $manifestPath -PathType Leaf) {
+$archive = if ($null -ne $manifest) {
     Join-Path $Root (Join-Path "dist" $manifest.package)
 }
 else {
@@ -140,21 +160,33 @@ if ($null -ne $archive -and (Test-Path -LiteralPath $archive -PathType Leaf)) {
     Add-Type -AssemblyName System.IO.Compression.FileSystem
     $zip = [System.IO.Compression.ZipFile]::OpenRead($archive)
     try {
-        $releaseFolder = "kampter-sd-25-skills-v$version"
+        $releaseFolder = [string]$manifest.archiveRoot
         $expectedEntries = @(
+            "$releaseFolder/README.md",
             "$releaseFolder/install.ps1",
-            "$releaseFolder/INSTALL.en.md",
-            "$releaseFolder/INSTALL.zh-CN.md",
-            "$releaseFolder/skills/kampter-sd-25-skills/SKILL.md",
-            "$releaseFolder/skills/kampter-sd-25-skills/agents/openai.yaml",
-            "$releaseFolder/skills/kampter-sd-25-skills-zh/SKILL.md",
-            "$releaseFolder/skills/kampter-sd-25-skills-zh/agents/openai.yaml"
+            "$releaseFolder/INSTALL.md",
+            "$releaseFolder/NOTICE.md",
+            "$releaseFolder/LICENSE",
+            "$releaseFolder/LICENSE.zh-CN.md",
+            "$releaseFolder/VERSION",
+            "$releaseFolder/PACKAGE-MANIFEST.json",
+            "$releaseFolder/kampter-sd-25-skills-zh/SKILL.md",
+            "$releaseFolder/kampter-sd-25-skills-zh/agents/openai.yaml"
         )
         $entryNames = @($zip.Entries | ForEach-Object { $_.FullName.Replace('\', '/') })
         foreach ($entry in $expectedEntries) {
             if ($entryNames -notcontains $entry) {
                 Add-CheckError "Package is missing: $entry"
             }
+        }
+
+        $forbiddenEntries = @($entryNames | Where-Object {
+            $_ -like "$releaseFolder/kampter-sd-25-skills/*" -or
+            $_ -like "$releaseFolder/skills/*" -or
+            $_ -like "$releaseFolder/*en.md"
+        })
+        foreach ($entry in $forbiddenEntries) {
+            Add-CheckError "Chinese-only package contains an unexpected entry: $entry"
         }
     }
     finally {

@@ -1,31 +1,33 @@
 # Install the Standalone Package
 
-The Xiaohongshu bundle contains both standalone editions:
+The Xiaohongshu bundle contains the Simplified Chinese edition only:
 
-- skills/kampter-sd-25-skills: English edition
-- skills/kampter-sd-25-skills-zh: Simplified Chinese edition
+~~~text
+kampter-sd-25-skills-zh
+~~~
+
+It does not include the English edition or a copy of the full repository.
 
 ## Easy Installation on Windows
 
 1. Extract the package.
-2. In PowerShell, run:
+2. Open PowerShell in the extracted directory.
+3. Run:
 
 ~~~powershell
-./install.ps1
+.\install.ps1
 ~~~
 
-3. Choose English or Chinese when prompted.
 4. Restart or reload the agent host so it discovers the new Skill.
 
-The installer copies the selected folder into CODEX_HOME/skills. When CODEX_HOME is absent, it uses the current user's default Codex directory. It refuses to overwrite an existing Skill unless you choose the replacement option.
+The installer copies `kampter-sd-25-skills-zh` into `CODEX_HOME/skills`. When `CODEX_HOME` is absent, it uses the current user's default Codex Skills directory. If the target already exists, the installer asks before creating a recoverable backup and replacing it.
 
 ## Manual Installation
 
-Copy one selected folder into the agent's Skills directory:
+Copy the package's `kampter-sd-25-skills-zh` folder into the agent's Skills directory:
 
 ~~~text
-English: <skills-dir>/kampter-sd-25-skills
-Chinese: <skills-dir>/kampter-sd-25-skills-zh
+<skills-dir>/kampter-sd-25-skills-zh
 ~~~
 
-Use one edition at a time unless the host supports both names. The two editions are intentionally separate, and their prompt-writing workflow is identical.
+Install the English edition from the repository root instead of this Xiaohongshu bundle.

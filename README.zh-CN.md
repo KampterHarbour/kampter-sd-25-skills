@@ -4,7 +4,7 @@
 
 由 [KampterHarbour](https://github.com/KampterHarbour) 维护。本项目是社区项目，不代表也未获得字节跳动背书。
 
-当前版本：v0.1.1。查看[变更日志](CHANGELOG.zh-CN.md)。
+当前版本：v0.1.2。查看[变更日志](CHANGELOG.zh-CN.md)。
 
 ## 选择版本
 
@@ -46,7 +46,7 @@
 - 英文版：CODEX_HOME/skills/kampter-sd-25-skills
 - 中文版：CODEX_HOME/skills/kampter-sd-25-skills-zh
 
-没有设置 CODEX_HOME 时，使用 Codex 的默认 Skills 目录。适合小红书分发的独立安装包会同时包含两套版本和本地安装说明。详见 [INSTALL.zh-CN.md](INSTALL.zh-CN.md)。
+没有设置 CODEX_HOME 时，使用 Codex 的默认 Skills 目录。适合小红书分发的独立安装包只包含简体中文版、中文专用安装器和精简的本地说明，不再附带英文版或完整仓库目录。详见 [INSTALL.zh-CN.md](INSTALL.zh-CN.md)。
 
 调用示例：
 
