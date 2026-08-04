@@ -1,7 +1,4 @@
-﻿interface:
-  display_name: "Kampter Seedance 2.5 提示词助手"
-  short_description: "与用户共创符合官方最佳实践的 Seedance 2.5 视频提示词"
-  default_prompt: "使用 $kampter-sd-25-skills，把我的视频想法整理成 Seedance 2.5 提示词。"
-
-policy:
-  allow_implicit_invocation: true
+interface:
+  display_name: "Kampter Seedance 2.5"
+  short_description: "Discuss and write Seedance 2.5 video prompts"
+  default_prompt: "Use $kampter-sd-25-skills to turn my Seedance 2.5 idea into a production-ready prompt."
